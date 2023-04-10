@@ -125,7 +125,7 @@ To build on Linux/Unix you can just execute `./docker-build.sh` which will creat
 
 #### Docker on Mac
 
-1. Make sure java is installed, check by running command: `java -v`
+1. Make sure java is installed, check by running command: `java --version`
 2. [Install brew](https://brew.sh/), remember to add brew to path (at end of installation there are clear instructions how to do it)
 3. Install colima
     `$brew install colima`
