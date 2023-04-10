@@ -1,0 +1,27 @@
+FROM openjdk:11.0-jre-buster
+LABEL org.opencontainers.image.authors="rICTx-T1D"
+
+# Dependencies
+RUN apt-get update && apt-get install --assume-yes git
+
+# Volume configuration
+RUN mkdir /output
+VOLUME /output
+
+# Change working directory
+WORKDIR /usr/src
+
+# Workaround for git crashes
+RUN git config --global http.postBuffer 524288000  
+RUN git config --global https.postBuffer 524288000
+RUN git config --global http.lowSpeedLimit 0
+RUN git config --global http.lowSpeedTime 999999
+
+# Clone Repository
+RUN git clone https://github.com/DiaKEM/dexcom-g7-apk-patcher.git /usr/src --depth=1
+
+COPY bin/build-mac.sh /usr/src/bin/build-mac.sh
+COPY bin/docker-entrypoint-mac.sh /usr/src/bin/docker-entrypoint-mac.sh
+
+# Start entrypoint
+ENTRYPOINT [ "bin/docker-entrypoint-mac.sh" ]

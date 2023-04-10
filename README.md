@@ -123,6 +123,16 @@ To simplify the patching process `@rICTx-T1D introduced a basic docker setup. Yo
 
 To build on Linux/Unix you can just execute `./docker-build.sh` which will create `docker.patched.apk` in your `cwd`.
 
+#### Docker on Mac
+
+1. Make sure java is installed, check by running command: `java -v`
+2. [Install brew](https://brew.sh/), remember to add brew to path (at end of installation there are clear instructions how to do it)
+3. Install colima
+    `$brew install colima`
+4. Execute `./docker-build-mac.sh` and wait - it takes few minutes
+5. Install/Copy `dexcom.patched-aligned-signed.apk` file
+6. At end, clean up with `./docker-clean-mac.sh`
+
 ### Windows
 
 If you want to patch under Windows you have to download and install [Ubuntu WSL](https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV?hl=de-de&gl=de&rtc=1).
